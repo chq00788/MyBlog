@@ -1,0 +1,99 @@
+doctype html
+html
+    head
+
+        title MyBlog
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet',href='/stylesheets/bootstrap.min.css')
+        script(src='/javascripts/jquery.min.js')
+        script(src='/javascripts/bootstrap.min.js')
+        style.
+            #rightAffix{
+                width: 250px;
+            }
+
+    body
+        block content
+            div.container
+                nav(role="navigation").navbar.navbar-inverse
+                    div.container-fluid
+                        div.navbar-header
+                            a(href="#").navbar-brand Brand
+                        div.collapse.navbar-collapse
+
+                            ul.nav.navbar-nav.navbar-right
+                                li.active
+                                    a(href="#").btn.btn-lg Home
+                                li
+                                    a(href="#").btn.btn-lg About
+                                li
+                                    a(href="#").btn.btn-lg Blog
+                                li
+                                    a(href="#").btn.btn-lg Contact
+                                li.dropdown
+                                    a(href="#",data-toggle="dropdown").dropdown-toggle.btn.btn-lg Login/Register
+                                        span.caret
+                                    ul(role="menu").dropdown-menu
+                                        li
+                                            a(href="#") 登录
+                                        li
+                                            a(href="#") 注册
+
+                div.col-md-9
+                    ul.list-group
+                        a(href="#").list-group-item.list-group-item-success
+                            h3.list-group-item-heading success
+                            p.list-group-item-text.
+                                success success success
+                                success  success success
+                                success success success success
+
+                        a(href="#").list-group-item.list-group-item-info
+                            h3.list-group-item-heading info
+                            p.list-group-item-text info info info info
+                        a(href="#").list-group-item.list-group-item-warning
+                            h3.list-group-item-heading warning
+                            p.list-group-item-text warning warning warning warning
+                        a(href="#").list-group-item.list-group-item-danger
+                            h3.list-group-item-heading danger
+                            p.list-group-item-text danger danger danger danger
+                        a(href="#").list-group-item.list-group-item-success
+                            h3.list-group-item-heading success
+                            p.list-group-item-text success success success success success success success success success success
+                        a(href="#").list-group-item.list-group-item-info
+                            h3.list-group-item-heading info
+                            p.list-group-item-text info info info info
+                        a(href="#").list-group-item.list-group-item-warning
+                            h3.list-group-item-heading warning
+                            p.list-group-item-text warning warning warning warning
+                        a(href="#").list-group-item.list-group-item-danger
+                            h3.list-group-item-heading danger
+                            p.list-group-item-text danger danger danger danger
+                        a(href="#").list-group-item.list-group-item-success
+                            h3.list-group-item-heading success
+                            p.list-group-item-text success success success success success success success success success success
+                        a(href="#").list-group-item.list-group-item-info
+                            h3.list-group-item-heading info
+                            p.list-group-item-text info info info info
+                        a(href="#").list-group-item.list-group-item-warning
+                            h3.list-group-item-heading warning
+                            p.list-group-item-text warning warning warning warning
+                        a(href="#").list-group-item.list-group-item-danger
+                            h3.list-group-item-heading danger
+                            p.list-group-item-text danger danger danger danger
+                div.col-md-3
+                    ul.list-group#rightAffix
+                        a(href="#").list-group-item.list-group-item-success success success
+                            span.badge 10
+                        a(href="#").list-group-item.list-group-item-info info
+                            span.badge 10
+                        a(href="#").list-group-item.list-group-item-warning warning
+                        a(href="#").list-group-item.list-group-item-danger danger
+    script(type="text/javascript").
+        $(function () {
+            $("#rightAffix").affix({
+                offset:{
+
+                }
+            });
+        });
