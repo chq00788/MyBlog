@@ -14,6 +14,7 @@ html
 
     body
         block content
+            include login
             div.container
                 nav(role="navigation").navbar.navbar-inverse
                     div.container-fluid
@@ -35,9 +36,9 @@ html
                                         span.caret
                                     ul(role="menu").dropdown-menu
                                         li
-                                            a(href="#") 登录
+                                            a(data-toggle="modal",data-target="#loginModal")(href="#") 登录
                                         li
-                                            a(href="#") 注册
+                                            a(data-toggle="modal",data-target="#registerModal")(href="#") 注册
 
                 div.col-md-9
                     ul.list-group
