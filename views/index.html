@@ -1,13 +1,62 @@
-<!DOCTYPE html><html><head><title>MyBlog</title><link rel="stylesheet" href="/stylesheets/style.css"><link rel="stylesheet" href="/stylesheets/bootstrap.min.css"><script src="/javascripts/jquery.min.js"></script><script src="/javascripts/bootstrap.min.js"></script><style>#rightAffix{
+<!DOCTYPE html><html><head><title>MyBlog</title><link rel="stylesheet" href="/stylesheets/style.css"><link rel="stylesheet" href="/stylesheets/bootstrap.min.css"><link rel="stylesheet" href="/stylesheets/toastr.min.css"><script src="/javascripts/jquery.min.js"></script><script src="/javascripts/bootstrap.min.js"></script><script src="/javascripts/toastr.min.js"></script><style>#rightAffix {
     width: 250px;
 }
-</style></head><body><!--Created by Administrator on 2016/9/14.--><!--登录--><div tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="loginModal" class="modal fade"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" data-dismiss="modal" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><h4 class="modal-title">登录</h4></div><div class="modal-body"><form role="form" action="/login" method="POST"><div class="form-group"><label for="username"></label><input type="text" placeholder="Enter UserName" name="username" id="username" class="form-control"></div><div class="form-group"><label for="password"></label><input type="password" placeholder="Enter Password" name="password" id="password" class="form-control"></div></form></div><div class="modal-footer"><button type="button" class="btn btn-primary">登录</button><button type="button" data-dismiss="modal" class="btn btn-default">取消</button></div></div></div></div><!--注册--><div tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="registerModal" class="modal fade"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" data-dismiss="modal" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><h4 class="modal-title">注册</h4></div><div class="modal-body"><form role="form" action="/register" method="POST"><div class="form-group"><label for="email"></label><input type="email" placeholder="Enter Email" name="email" id="email" class="form-control"></div><div class="form-group"><label for="username"></label><input type="text" placeholder="Enter UserName" name="username" id="username" class="form-control"></div><div class="form-group"><label for="password"></label><input type="password" placeholder="Enter Password" name="password" id="password" class="form-control"></div></form></div><div class="modal-footer"><button type="button" class="btn btn-primary">注册</button><button type="button" data-dismiss="modal" class="btn btn-default">取消</button></div></div></div></div><div class="container"><nav role="navigation" class="navbar navbar-inverse"><div class="container-fluid"><div class="navbar-header"><a href="#" class="navbar-brand">Brand</a></div><div class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-right"><li class="active"><a href="#" class="btn btn-lg">首页</a></li><li><a href="/myBlog" class="btn btn-lg">我的博客</a></li><li><a href="#" class="btn btn-lg">About</a></li><li><a href="#" class="btn btn-lg">Contact</a></li><li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle btn">登录/注册<span class="caret"></span></a><ul role="menu" class="dropdown-menu"><li><a data-toggle="modal" data-target="#loginModal" href="#">登录</a></li><li class="divider"></li><li><a data-toggle="modal" data-target="#registerModal" href="#">注册</a></li></ul></li></ul></div></div></nav><div class="col-md-9"><div class="row"><div class="col-xs-6 col-md3"><a href="#" class="thumbnail"><img src="/images/wukong.jpg" alt=""></a></div><div class="col-xs-6 col-md3"><a href="#" class="thumbnail"><img src="/images/wukong.jpg" alt=""></a></div></div><ul class="list-group"><a href="#" class="list-group-item list-group-item-success"><h3 class="list-group-item-heading">success</h3><p class="list-group-item-text">success success success
+</style></head><body><!--Created by Administrator on 2016/9/14.--><!--登录--><div tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="loginModal" class="modal fade"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" data-dismiss="modal" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><h4 class="modal-title">登录</h4></div><div class="modal-body"><form role="form" action="/login" method="POST" id="loginForm"><div class="form-group"><label for="username"></label><input type="text" placeholder="Enter UserName" name="username" id="username_login" class="form-control"></div><div class="form-group"><label for="password"></label><input type="password" placeholder="Enter Password" name="password" id="password_login" class="form-control"></div></form></div><div class="modal-footer"><button type="button" id="loginBtn" class="btn btn-primary">登录</button><button type="button" data-dismiss="modal" class="btn btn-default">取消</button></div></div></div></div><!--注册--><div tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="registerModal" class="modal fade"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" data-dismiss="modal" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><h4 class="modal-title">注册</h4></div><div class="modal-body"><form role="form" action="/register" method="POST" id="registerForm"><div class="form-group"><label for="email"></label><input type="email" placeholder="Enter Email" name="email" id="email" class="form-control"></div><div class="form-group"><label for="username"></label><input type="text" placeholder="Enter UserName" name="username" id="username" class="form-control"></div><div class="form-group"><label for="password"></label><input type="password" placeholder="Enter Password" name="password" id="password" class="form-control"></div></form></div><div class="modal-footer"><button type="button" id="registerBtn" class="btn btn-primary">注册</button><button type="button" data-dismiss="modal" class="btn btn-default">取消</button></div></div></div></div><div class="container"><nav role="navigation" class="navbar navbar-inverse"><div class="container-fluid"><div class="navbar-header"><a href="#" class="navbar-brand">Brand</a></div><div class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-right"><li class="active"><a href="#" class="btn btn-lg">首页</a></li><li><a href="/myBlog" class="btn btn-lg">我的博客</a></li><li><a href="#" class="btn btn-lg">About</a></li><li><a href="#" class="btn btn-lg">Contact</a></li><li id="dropdown" class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle btn">登录/注册<span class="caret"></span></a><ul role="menu" class="dropdown-menu"><li><a data-toggle="modal" data-target="#loginModal" href="#">登录</a></li><li class="divider"></li><li><a data-toggle="modal" data-target="#registerModal" href="#">注册</a></li></ul></li><li hidden="hidden" id="welcome"><a href="#" id="welcomeUsername" class="btn"></a></li></ul></div></div></nav><div class="col-md-9"><div class="row"><div class="col-xs-6 col-md3"><a href="#" class="thumbnail"><img src="/images/wukong.jpg" alt=""></a></div><div class="col-xs-6 col-md3"><a href="#" class="thumbnail"><img src="/images/wukong.jpg" alt=""></a></div></div><ul class="list-group"><a href="#" class="list-group-item list-group-item-success"><h3 class="list-group-item-heading">success</h3><p class="list-group-item-text">success success success
 success  success success
 success success success success
 </p></a><a href="#" class="list-group-item list-group-item-info"><h3 class="list-group-item-heading">info</h3><p class="list-group-item-text">info info info info</p></a><a href="#" class="list-group-item list-group-item-warning"><h3 class="list-group-item-heading">warning</h3><p class="list-group-item-text">warning warning warning warning</p></a><a href="#" class="list-group-item list-group-item-danger"><h3 class="list-group-item-heading">danger</h3><p class="list-group-item-text">danger danger danger danger</p></a><a href="#" class="list-group-item list-group-item-success"><h3 class="list-group-item-heading">success</h3><p class="list-group-item-text">success success success success success success success success success success</p></a><a href="#" class="list-group-item list-group-item-info"><h3 class="list-group-item-heading">info</h3><p class="list-group-item-text">info info info info</p></a><a href="#" class="list-group-item list-group-item-warning"><h3 class="list-group-item-heading">warning</h3><p class="list-group-item-text">warning warning warning warning</p></a><a href="#" class="list-group-item list-group-item-danger"><h3 class="list-group-item-heading">danger</h3><p class="list-group-item-text">danger danger danger danger</p></a><a href="#" class="list-group-item list-group-item-success"><h3 class="list-group-item-heading">success</h3><p class="list-group-item-text">success success success success success success success success success success</p></a><a href="#" class="list-group-item list-group-item-info"><h3 class="list-group-item-heading">info</h3><p class="list-group-item-text">info info info info</p></a><a href="#" class="list-group-item list-group-item-warning"><h3 class="list-group-item-heading">warning</h3><p class="list-group-item-text">warning warning warning warning</p></a><a href="#" class="list-group-item list-group-item-danger"><h3 class="list-group-item-heading">danger</h3><p class="list-group-item-text">danger danger danger danger</p></a></ul></div><div class="col-md-3"><ul id="rightAffix" class="list-group"><a href="#" class="list-group-item list-group-item-success">success success<span class="badge">10</span></a><a href="#" class="list-group-item list-group-item-info">info<span class="badge">10</span></a><a href="#" class="list-group-item list-group-item-warning">warning</a><a href="#" class="list-group-item list-group-item-danger">danger</a></ul></div></div></body><script type="text/javascript">$(function () {
     $("#rightAffix").affix({
-        offset:{
-
-        }
+        offset: {}
+    });
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "positionClass": "toast-bottom-right",
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+    /** 注册 **/
+    $("#registerBtn").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "/users/register",
+            data: $("#registerForm").serialize(),
+            success: function (json) {
+                if (json.code == 200) {
+                    $('#registerModal').modal('hide');
+                    toastr.success(json.msg);
+                }
+                else {
+                    toastr.success(json.msg);
+                }
+            }
+        });
+    });
+    /** 登陆 **/
+    $("#loginBtn").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "/users/login",
+            data: $("#loginForm").serialize(),
+            success: function (json) {
+                if (json.code == 200) {
+                    $('#loginModal').modal('hide');
+                    $("#dropdown").hide();
+                    $("#welcomeUsername").append(json.username);
+                    $("#welcome").show();
+                    toastr.success(json.msg);
+                }
+                else {
+                    toastr.success(json.msg);
+                }
+            }
+        });
     });
 });</script></html>

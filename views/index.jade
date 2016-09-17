@@ -5,10 +5,12 @@ html
         title MyBlog
         link(rel='stylesheet', href='/stylesheets/style.css')
         link(rel='stylesheet',href='/stylesheets/bootstrap.min.css')
+        link(rel='stylesheet', href='/stylesheets/toastr.min.css')
         script(src='/javascripts/jquery.min.js')
         script(src='/javascripts/bootstrap.min.js')
+        script(src='/javascripts/toastr.min.js')
         style.
-            #rightAffix{
+            #rightAffix {
                 width: 250px;
             }
 
@@ -31,7 +33,7 @@ html
                                     a(href="#").btn.btn-lg About
                                 li
                                     a(href="#").btn.btn-lg Contact
-                                li.dropdown
+                                li.dropdown#dropdown
                                     a(href="#",data-toggle="dropdown").dropdown-toggle.btn 登录/注册
                                         span.caret
                                     ul(role="menu").dropdown-menu
@@ -40,6 +42,8 @@ html
                                         li.divider
                                         li
                                             a(data-toggle="modal",data-target="#registerModal")(href="#") 注册
+                                li(hidden="hidden")#welcome
+                                    a(href="#").btn#welcomeUsername
 
                 div.col-md-9
                     div.row
@@ -101,8 +105,57 @@ html
     script(type="text/javascript").
         $(function () {
             $("#rightAffix").affix({
-                offset:{
-
-                }
+                offset: {}
+            });
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            /** 注册 **/
+            $("#registerBtn").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/users/register",
+                    data: $("#registerForm").serialize(),
+                    success: function (json) {
+                        if (json.code == 200) {
+                            $('#registerModal').modal('hide');
+                            toastr.success(json.msg);
+                        }
+                        else {
+                            toastr.success(json.msg);
+                        }
+                    }
+                });
+            });
+            /** 登陆 **/
+            $("#loginBtn").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/users/login",
+                    data: $("#loginForm").serialize(),
+                    success: function (json) {
+                        if (json.code == 200) {
+                            $('#loginModal').modal('hide');
+                            $("#dropdown").hide();
+                            $("#welcomeUsername").append(json.username);
+                            $("#welcome").show();
+                            toastr.success(json.msg);
+                        }
+                        else {
+                            toastr.success(json.msg);
+                        }
+                    }
+                });
             });
         });

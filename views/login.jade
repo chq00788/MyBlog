@@ -11,16 +11,16 @@ div(tabindex="-1",role="dialog",aria-labelledby="myModalLabel",aria-hidden="true
                     span.sr-only Close
                 h4.modal-title 登录
             div.modal-body
-                form(role='form',action="/login",method="POST")
+                form(role='form',action="/login",method="POST")#loginForm
                     div.form-group
                         label(for='username')
-                        input(type='text',placeholder='Enter UserName',name="username").form-control#username
+                        input(type='text',placeholder='Enter UserName',name="username").form-control#username_login
                     div.form-group
                         label(for='password')
-                        input(type='password',placeholder='Enter Password',name="password").form-control#password
+                        input(type='password',placeholder='Enter Password',name="password").form-control#password_login
 
             div.modal-footer
-                button(type="button").btn.btn-primary 登录
+                button(type="button").btn.btn-primary#loginBtn 登录
                 button(type="button",data-dismiss="modal").btn.btn-default 取消
 
 
@@ -35,7 +35,7 @@ div(tabindex="-1",role="dialog",aria-labelledby="myModalLabel",aria-hidden="true
                     span.sr-only Close
                 h4.modal-title 注册
             div.modal-body
-                form(role='form',action="/register",method="POST")
+                form(role='form',action="/register",method="POST")#registerForm
                     div.form-group
                         label(for='email')
                         input(type='email',placeholder='Enter Email',name='email').form-control#email
@@ -47,5 +47,5 @@ div(tabindex="-1",role="dialog",aria-labelledby="myModalLabel",aria-hidden="true
                         input(type='password',placeholder='Enter Password',name="password").form-control#password
 
             div.modal-footer
-                button(type="button").btn.btn-primary 注册
+                button(type="button").btn.btn-primary#registerBtn 注册
                 button(type="button",data-dismiss="modal").btn.btn-default 取消
