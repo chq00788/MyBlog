@@ -1,0 +1,80 @@
+doctype html
+html
+    head
+
+        title MyBlog
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet',href='/stylesheets/bootstrap.min.css')
+        link(rel='stylesheet',href='/stylesheets/jquery.bootgrid.min.css')
+        script(src='/javascripts/jquery.min.js')
+        script(src='/javascripts/bootstrap.min.js')
+        script(src='/javascripts/moderniz.2.8.1.js')
+        script(src='/javascripts/jquery.bootgrid.min.js')
+        style.
+            #rightAffix{
+                width: 250px;
+            }
+
+    body
+        block content
+            include login
+            div.container
+                nav(role="navigation").navbar.navbar-inverse
+                    div.container-fluid
+                        div.navbar-header
+                            a(href="#").navbar-brand Brand
+                        div.collapse.navbar-collapse
+
+                            ul.nav.navbar-nav.navbar-right
+                                li
+                                    a(href="/").btn.btn-lg 首页
+                                li.active
+                                    a(href="/myBlog").btn.btn-lg 我的博客
+                                li
+                                    a(href="#").btn.btn-lg About
+                                li
+                                    a(href="#").btn.btn-lg Contact
+                                li.dropdown
+                                    a(href="#",data-toggle="dropdown").dropdown-toggle.btn 登录/注册
+                                        span.caret
+                                    ul(role="menu").dropdown-menu
+                                        li
+                                            a(data-toggle="modal",data-target="#loginModal")(href="#") 登录
+                                        li.divider
+                                        li
+                                            a(data-toggle="modal",data-target="#registerModal")(href="#") 注册
+
+                div.col-md-9
+                    ul(role="tablist").nav.nav-tabs
+                        li(role="presentation").active
+                            a(href="#") 文章管理
+                        li(role="presentation")
+                            a(href="#") 类别管理
+                        li(role="presentation")
+                            a(href="#") 评论管理
+                        li(role="presentation")
+                            a(href="#") 草稿箱
+                        li(role="presentation")
+                            a(href="#") 回收站
+                    div.container-fluid#mainBody
+
+
+                div.col-md-3
+                    div.row
+                        div.col-xs-6.col-md3
+                            a(href='#').thumbnail
+                                img(src="/images/wukong.jpg",alt="")
+                        div.col-xs-6.col-md3
+                            div.row
+                                div.col-md-2
+                                    span #{name}
+                            div.row
+                                div.col-md-2
+                                    button(type="button").btn.btn-primary.btn-sm
+                                        span.glyphicon.glyphicon-plus 写文章
+
+
+    script(type="text/javascript").
+        $(function () {
+            $("#mainBody").load('/blogs/toBlogList');
+        });

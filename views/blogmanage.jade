@@ -1,0 +1,43 @@
+table(data-selection="true",data-multi-select="true",data-row-select="true",data-keep-selection="true").table.table-condensed.table-hover.table-striped#grid
+    thead
+        tr
+            th(data-column-id="_id", data-identifier="true",data-header-align="center",data-align="center", data-width="5%")
+            th(data-column-id="username", data-align="center", data-header-align="center",data-width="50%") 标题
+            th(data-column-id="username", data-align="center", data-header-align="center",data-width="7%") 状态
+            th(data-column-id="password",data-align="center", data-header-align="center",data-width="7%") 阅读
+            th(data-column-id="email", data-align="center", data-header-align="center",data-width="7%") 评论
+            th(data-column-id="email", data-align="center", data-header-align="center") 操作
+    tbody
+
+
+
+
+script(type='text/javascript').
+    $(function () {
+        /** 初始化数据列表**/
+        function init() {
+            $("#grid").bootgrid({
+                ajax: true,
+                post: function () {
+                    /* To accumulate custom parameter with the request object */
+                    return {
+                        id: "b0df282a-0d67-40e5-8558-c9e93b7befed"
+                    };
+                },
+                url: "/users/pagingQuery",
+                selection: true,
+                multiSelect: true,
+                rowSelect: true,
+                keepSelection: true,
+                navigation: 1,
+                formatters: {
+                    "commands": function (column, row) {
+                        return "<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-pencil\"></span></button> " +
+                                "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-trash-o\"></span></button>";
+                    }
+                }
+            });
+        }
+
+        init();
+    });
