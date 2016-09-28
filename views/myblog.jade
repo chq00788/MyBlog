@@ -70,11 +70,12 @@ html
                                     span #{name}
                             div.row
                                 div.col-md-2
-                                    button(type="button").btn.btn-primary.btn-sm
+                                    a(type="button",target="_blank",href="/blogs/toEditBlog").btn.btn-primary.btn-sm#editBlog
                                         span.glyphicon.glyphicon-plus 写文章
 
 
     script(type="text/javascript").
         $(function () {
             $("#mainBody").load('/blogs/toBlogList');
+
         });
